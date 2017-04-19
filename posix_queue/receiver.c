@@ -26,5 +26,9 @@ int main(int argc, char **argv)
     
     ssize_t bytes_read = mq_receive(mq, buffer, MAX_SIZE, NULL);
     buffer[bytes_read] = '\0';
+
+    FILE *f = fopen("/home/vi/message.txt", "w");
+    fprintf(f, "%s\n", buffer);
+    fclose(f);
     printf("Received: %s\n", buffer);
 }
